@@ -1,3 +1,6 @@
+Download in Marketplace:
+[Json To C#](https://marketplace.visualstudio.com/items?itemName=MatthiasBurger.JsonToCSharp)
+
 > There is no update-package from V1 to V1.1 since I made a mistake with deployment. You probably need to uninstall V1 completely and install V1.1 
 
 You can convert JSON to a C# class-structure, by either selecting a part of the json or without selecting, the whole file.
