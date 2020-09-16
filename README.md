@@ -1,19 +1,15 @@
-Json2Csharp Visual-Studio-Extension
+> There is no update-package from V1 to V1.1 since I made a mistake with deployment. You probably need to uninstall V1 completely and install V1.1 
 
 You can convert JSON to a C# class-structure, by either selecting a part of the json or without selecting, the whole file.
-This is just a first, simple solution to get a class-structure out of a JSON. If you have any issues or improvements, add an issue and I will take a look at it. :)
+This is just a first, simple solution to get a class-structure out of a JSON. If you have any issues or improvements, add an issue in my [github-issues](https://github.com/matthiasburger/Json2Csharp-Issues/issues) and I will take a look at it. :)
 
 # How to use:
 
-* in an existing solution
-  * open the .json-file
-  * click "Tools" -> "Json To C#"
-  * a new .cs-file is opened containing the C# class-structure
+You can find the new menu "Json to C#" in "Extensions".
 
-* without an existing solution
-  * open the file to convert
-  * click "Tools" -> "Json To C#"
-  * the opened file is replaced with the generated C# class-structure
+* in an existing solution, a new .cs-file is opened containing the C# class-structure
+* without an existing solution, the opened file is replaced with the generated C# class-structure
+* you also can simply copy json from anywhere into your clipboard and directly paste the C# structure with click on "Paste JSON as C#"
 
 # Important:
  * the selected text (or the file if nothing is selected) needs to start with either "[" for an array or "{" for an object. Otherwise no class is generated.
@@ -21,7 +17,7 @@ This is just a first, simple solution to get a class-structure out of a JSON. If
 # Example:
 
 filename: any.json
-```javascript
+```json
 {
 "items":
     {
@@ -122,13 +118,30 @@ namespace None
 
 # Live preview
 
-![ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-40-29.gif](https://matthiasburger.gallerycdn.vsassets.io/extensions/matthiasburger/jsontocsharp/1.0/1599656408078/ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-40-29.gif)
+![ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-40-29.gif](ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-40-29.gif)
 
-![ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-43-19.gif](https://matthiasburger.gallerycdn.vsassets.io/extensions/matthiasburger/jsontocsharp/1.0/1599656408078/ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-43-19.gif)
+![ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-43-19.gif](ConsoleApp3_-_Microsoft_Visual_Studio__Administrator__2020-09-09_14-43-19.gif)
 
 # Planned issues:
-* saving the new generated .cs to the path of json-file
-* generating the correct namespace
-* adding the new generated .cs to the solution
-* adding a context-menu to paste json from clipboard to c# directly
-* settings-menu for adding some settings
+| issue | development state |
+| --- | --- |
+| settings-menu for adding some settings | |
+
+# Version-History
+
+### V 1.1.1 (16/09/2020)
+* Bugfix:
+  * simple-type arrays are now converted correctly to e.g. `IList<string>` instead of `IList<SimpleType>` where `SimpleType` was an empty class
+  * when a json-file was converted that did not belong to an opened solution, a nullreference-exception was thrown
+
+### V 1.1 (15/09/2020)
+* Features: 
+  * you can now copy json and on button-click paste the c# result
+* Improvement
+  * menu is moved from "Tools" to "Extensions" and has a submenu
+  * files are auto-saved in the same path as their json and added to project
+  * if there's another c#-file in the same directory, the namespace is copied
+
+### V 1.0 (09/09/2020)
+* Base Version. Requires an active document that is getting converted. You either can select a part from json, or (without selecting) convert the complete file. Within an open solution, a new .cs-file is created and the result is pasted in - without an active solution, the json is replaced. (I will remove this behaviour in a future version)
+
